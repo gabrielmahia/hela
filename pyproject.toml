@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hela"
+version = "0.1.0-dev"
+description = "Chama management for the 21st century"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Gabriel Mahia", email = "contact@aikungfu.dev" }]
+keywords = ["chama", "sacco", "rosca", "kenya", "fintech", "africa", "mpesa", "savings"]
+requires-python = ">=3.10"
+dependencies = ["m-pesa-rails>=0.1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov", "ruff"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
