@@ -84,6 +84,21 @@ html, body, [class*="css"] {
     padding-bottom: 0.4rem;
     margin: 1.5rem 0 1rem 0;
 }
+
+/* ── Mobile responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    [data-testid="column"] {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+    }
+    [data-testid="stMetricValue"] { font-size: 1.5rem !important; }
+    [data-testid="stDataFrame"] { overflow-x: auto !important; }
+    section[data-testid="stSidebar"] { min-width: 200px !important; }
+    .stButton > button { width: 100% !important; min-height: 48px !important; }
+    .hela-header h1 { font-size: 1.4rem !important; }
+    .stat-card .value { font-size: 1.3rem !important; }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -242,15 +257,25 @@ if PAGE == "📊 Dashboard":
     unpaid_fines = sum(f["amount"] for f in st.session_state.fines if not f["paid"])
     welfare_fund = 1_800  # demo
 
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Total contributions collected", format_kes(total_contributions))
-    with col2:
-        st.metric("Active loans outstanding", format_kes(active_loans_total))
-    with col3:
-        st.metric("Unpaid fines", format_kes(unpaid_fines))
-    with col4:
-        st.metric("Welfare fund", format_kes(welfare_fund))
+    kpis = [
+        ("💰 Contributions collected", format_kes(total_contributions), "#0f3460"),
+        ("🏦 Active loans", format_kes(active_loans_total), "#e63946"),
+        ("⚠️ Unpaid fines", format_kes(unpaid_fines), "#f4a261"),
+        ("🤝 Welfare fund", format_kes(welfare_fund), "#2a9d8f"),
+    ]
+    kpi_html = '<div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.2rem;">'
+    for label, value, color in kpis:
+        kpi_html += (
+            f'<div style="flex:1 1 160px;min-width:140px;background:#f8f9fa;'
+            f'border-left:4px solid {color};border-radius:8px;padding:0.9rem 1rem;">'
+            f'<div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;'
+            f'color:#6c757d;margin-bottom:0.25rem;">{label}</div>'
+            f'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.4rem;'
+            f'font-weight:700;color:#1a1a2e;">{value}</div>'
+            f'</div>'
+        )
+    kpi_html += '</div>'
+    st.markdown(kpi_html, unsafe_allow_html=True)
 
     # Current cycle status
     st.markdown('<div class="section-title">Current cycle — contribution status</div>', unsafe_allow_html=True)
