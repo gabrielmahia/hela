@@ -244,6 +244,13 @@ st.sidebar.caption("No real transactions. All figures are illustrative.")
 # PAGE: Dashboard
 # ══════════════════════════════════════════════════════════════════════════════
 if PAGE == "📊 Dashboard":
+    st.markdown("""
+    <div style="background:#fff3cd;border-left:4px solid #ffc107;border-radius:6px;padding:0.8rem 1rem;margin-bottom:1rem;">
+      <strong>⚠️ DEMO MODE</strong> — All names, transactions, and figures below are illustrative.
+      This is a preview of what your chama could look like once members start contributing.
+      <br><span style="font-size:0.82rem;">To start with your real chama: use the ⚙️ <strong>Settings</strong> page to rename the group and clear demo data.</span>
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown(f"""
     <div class="hela-header">
         <h1>💰 hela</h1>
@@ -571,3 +578,17 @@ elif PAGE == "⚙️ Settings":
             })
             st.success("Settings updated.")
             st.rerun()
+
+    st.markdown("---")
+    st.markdown("#### 🗑️ Reset demo data")
+    st.caption(
+        "Clears all demo members, contributions, loans, and fines. "
+        "Use this once you're ready to enter your chama's real data."
+    )
+    if st.button("Clear demo data and start fresh", type="secondary"):
+        for key in ["members", "contributions", "loans", "fines"]:
+            if key in st.session_state:
+                del st.session_state[key]
+        st.session_state.chama["name"] = new_name or "My Chama"
+        st.success("Demo data cleared. Add your real members in the Members page.")
+        st.rerun()
