@@ -13,7 +13,7 @@ import uuid
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="hela — Chama Manager",
+    page_title="Hela — Chama Manager",
     page_icon="💰",
     layout="wide",
     initial_sidebar_state="expanded",
