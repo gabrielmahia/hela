@@ -253,7 +253,7 @@ if PAGE == "📊 Dashboard":
     """, unsafe_allow_html=True)
     st.markdown(f"""
     <div class="hela-header">
-        <h1>💰 hela</h1>
+        <h1>💰 Hela — Chama Manager</h1>
         <p>{c['name']} &nbsp;·&nbsp; Founded {c['founded'].strftime('%B %Y')} &nbsp;·&nbsp; {len(active_members())} active members</p>
     </div>
     """, unsafe_allow_html=True)
