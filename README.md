@@ -1,11 +1,12 @@
-# hela
+# 💰 Hela — Chama Management for the 21st Century
 
 **Chama management for the 21st century.**
 
+[![Live App](https://img.shields.io/badge/Live%20App-hela.streamlit.app-FF4B4B?logo=streamlit)](https://hela.streamlit.app)
 [![Status](https://img.shields.io/badge/status-early%20development-orange)](#roadmap)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red)](LICENSE)
 
-> **hela** /héla/ — *Kiswahili*: money, wealth, funds.
+> **Hela** /héla/ — *Kiswahili*: money, wealth, funds.
 
 Kenya has over 300,000 registered chamas — informal savings and investment groups — plus an unknown multiple of unregistered ones. By some estimates, chamas manage over KES 300 billion in assets collectively. They are the dominant financial infrastructure for ordinary Kenyans.
 
@@ -128,3 +129,24 @@ CC BY-NC-ND 4.0. Commercial licensing: contact@aikungfu.dev
 ---
 
 *Part of the [gabrielmahia](https://github.com/gabrielmahia) portfolio — infrastructure where Africa's economic reality meets software engineering.*
+---
+
+## Portfolio
+
+Part of a suite of civic and community tools built by [Gabriel Mahia](https://github.com/gabrielmahia):
+
+| App | What it does |
+|-----|-------------|
+| [🌊 Mafuriko](https://floodwatch-kenya.streamlit.app) | Flood risk & policy enforcement tracker — Kenya |
+| [💧 WapiMaji](https://wapimaji.streamlit.app) | Water stress & drought intelligence — 47 counties |
+| [🏛️ Macho ya Wananchi](https://civic-decoder.streamlit.app) | MP voting records, CDF spending, bill tracker |
+| [🌾 JuaMazao](https://mazao-intel.streamlit.app) | Live food price intelligence for smallholders |
+| [🏦 ChaguaSacco](https://sacco-scout.streamlit.app) | Compare Kenya SACCOs on dividends & loan rates |
+| [🛡️ Hesabu](https://budget-sentinel.streamlit.app) | County budget absorption tracker |
+| [🗺️ Hifadhi](https://hifadhi.streamlit.app) | Riparian encroachment & Water Act compliance map |
+| [💰 Hela](https://hela.streamlit.app) | Chama management for the 21st century |
+| [💸 TumaPesa](https://remit-lens.streamlit.app) | True cost remittance comparison — diaspora to Kenya |
+| [📊 Msimamo](https://quantum-maestro.streamlit.app) | Macro risk & trade intelligence terminal |
+| [🦁 Dagoretti](https://dagoretti-community-hub.streamlit.app) | Alumni atlas & community hub for Dagoretti High |
+| [⛪ Jumuia](https://catholicparishsteward.streamlit.app) | Catholic parish tools — church finder, pastoral care |
+
