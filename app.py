@@ -553,7 +553,16 @@ elif PAGE == "🏦 Loans & Fines":
 # ══════════════════════════════════════════════════════════════════════════════
 elif PAGE == "⚙️ Settings":
     st.title("Chama settings")
-    st.info("Changes here update your session only (demo mode — no database).")
+    st.warning(
+        "⚠️ **No persistence — data resets on every page refresh.**\n\n"
+        "Hela stores everything in browser session memory only. "
+        "If you close this tab, refresh the page, or the Streamlit server restarts, "
+        "all members, contributions, loans, and fines are gone.\n\n"
+        "**Before entering real chama data:** connect a Google Sheet as your backend "
+        "(see the README) so records are saved permanently. "
+        "The demo data below is for exploration only.",
+        icon=None
+    )
 
     with st.form("settings"):
         c = st.session_state.chama
