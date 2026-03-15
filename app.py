@@ -144,7 +144,6 @@ def _init_state():
         }
         for i, cd in enumerate(cycle_dates):
             for m in st.session_state.members:
-                st.session_state_status = statuses[m["id"]][i]
                 receipt = f"RHF{uuid.uuid4().hex[:6].upper()}" if statuses[m["id"]][i] == "confirmed" else None
                 contribs.append({
                     "id": str(uuid.uuid4())[:8],
