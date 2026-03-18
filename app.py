@@ -7,6 +7,7 @@ All data is in-memory session state (no database required to run).
 from __future__ import annotations
 
 import streamlit as st
+import urllib.request, json
 import pandas as pd
 from datetime import date, datetime, timedelta
 import uuid
@@ -102,6 +103,16 @@ html, body, [class*="css"] {
 </style>
 """, unsafe_allow_html=True)
 
+
+# ── Live KES rate for diaspora context ────────────────────────────────────────
+_kes = fetch_kes_rate()
+if _kes["live"]:
+    st.caption(
+        f"📡 Live FX · 1 USD = {_kes['usd_kes']} KES · "
+        f"1 GBP = {_kes['gbp_kes']} KES · "
+        f"1 EUR = {_kes['eur_kes']} KES · "
+        f"open.er-api.com · {_kes['updated']}"
+    )
 
 # ── Session state: seed demo data once ────────────────────────────────────────
 
