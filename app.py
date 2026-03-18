@@ -114,6 +114,15 @@ if _kes["live"]:
         f"open.er-api.com · {_kes['updated']}"
     )
 
+# ── COB compliance context ────────────────────────────────────────────────
+_cob_h = fetch_cob_signal()
+if _cob_h:
+    with st.expander(f"📡 Latest from Controller of Budget ({_cob_h[0]['date']})", expanded=False):
+        st.caption("Relevant for chamas with county government employees — salary compliance signals")
+        for _ch in _cob_h:
+            st.markdown(f"**[{_ch['title'][:75]}{'…' if len(_ch['title'])>75 else ''}]({_ch['link']})**")
+            st.caption(f"{_ch['date']} · {_ch['summary'][:100]}…")
+
 # ── Session state: seed demo data once ────────────────────────────────────────
 
 def _init_state():
@@ -611,3 +620,27 @@ elif PAGE == "⚙️ Settings":
         st.session_state.chama["name"] = new_name or "My Chama"
         st.success("Demo data cleared. Add your real members in the Members page.")
         st.rerun()
+@st.cache_data(ttl=3600)
+def fetch_cob_signal():
+    """Latest COB publication — county salary/wage compliance context."""
+    try:
+        import xml.etree.ElementTree as ET, re as _r
+        req = urllib.request.Request(
+            "https://cob.go.ke/feed/",
+            headers={"User-Agent": "hela-app/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=8) as r:
+            root = ET.fromstring(r.read())
+        items = []
+        for item in root.findall(".//item")[:3]:
+            title = item.findtext("title", "").strip()
+            link  = item.findtext("link", "").strip()
+            date  = item.findtext("pubDate", "").strip()[:16]
+            desc  = _r.sub(r"<[^>]+>", "", item.findtext("description", "")).strip()[:120]
+            if title:
+                items.append({"title": title, "link": link, "date": date, "summary": desc})
+        return items
+    except Exception:
+        return []
+
+
