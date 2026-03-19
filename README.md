@@ -3,6 +3,7 @@
 **Chama management for the 21st century.**
 
 [![Live App](https://img.shields.io/badge/Live%20App-hela.streamlit.app-FF4B4B?logo=streamlit)](https://hela.streamlit.app)
+[![Live Data](https://img.shields.io/badge/Live%20Data-open.er-api.com%20%C2%B7%20COB%20RSS-00b4d8)](#hela)
 [![Status](https://img.shields.io/badge/status-early%20development-orange)](#roadmap)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red)](LICENSE)
 
