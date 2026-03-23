@@ -104,6 +104,27 @@ html, body, [class*="css"] {
 """, unsafe_allow_html=True)
 
 
+@st.cache_data(ttl=3600)
+def fetch_kes_rate():
+    """Live USD/GBP/EUR to KES rates for diaspora chama members."""
+    import json as _hj
+    try:
+        with urllib.request.urlopen(
+            "https://open.er-api.com/v6/latest/USD", timeout=6
+        ) as r:
+            d = _hj.loads(r.read())
+        rates = d["rates"]
+        kes = rates["KES"]
+        return {
+            "usd_kes": round(kes, 2),
+            "gbp_kes": round(kes / rates["GBP"], 2),
+            "eur_kes": round(kes / rates["EUR"], 2),
+            "updated": d.get("time_last_update_utc", "")[:16],
+            "live": True,
+        }
+    except Exception:
+        return {"usd_kes": 129.0, "gbp_kes": 162.0, "eur_kes": 140.0, "updated": "fallback", "live": False}
+
 # ── Live KES rate for diaspora context ────────────────────────────────────────
 _kes = fetch_kes_rate()
 if _kes["live"]:
