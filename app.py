@@ -120,6 +120,16 @@ html, body, [class*="css"] {
 </style>
 """, unsafe_allow_html=True)
 
+# ── Data notice ───────────────────────────────────────────────────────────────
+st.info(
+    "**Demo mode** — Sample chama data, resets on reload. "
+    "No data is saved or stored. "
+    "For a persistent deployment for your real chama: "
+    "[contact@aikungfu.dev](mailto:contact@aikungfu.dev)",
+    icon="ℹ️"
+)
+# ──────────────────────────────────────────────────────────────────────────────
+
 
 def fetch_cob_signal():
     """Latest COB publication — county salary/wage compliance context."""
