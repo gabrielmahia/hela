@@ -129,6 +129,25 @@ html, body, [class*="css"] {
     [data-theme="dark"] .badge-waived,    .stApp[data-theme="dark"] .badge-waived    { background: #0d2d35 !important; color: #7dd8e8 !important; }
     [data-theme="dark"] .badge-failed,    .stApp[data-theme="dark"] .badge-failed    { background: #3d1015 !important; color: #f1948a !important; }
 
+
+    [data-theme="dark"] .stat-card,
+    .stApp[data-theme="dark"] .stat-card {
+        background: #1e2127 !important;
+        border-color: #30333d !important;
+        color: #f0f0f0 !important;
+    }
+    [data-theme="dark"] .stat-card .label,
+    .stApp[data-theme="dark"] .stat-card .label { color: #aaaaaa !important; }
+    [data-theme="dark"] .stat-card .value,
+    .stApp[data-theme="dark"] .stat-card .value { color: #f0f0f0 !important; }
+    @media (prefers-color-scheme: dark) {
+        .stat-card       { background: #1e2127 !important; border-color: #30333d !important; color: #f0f0f0 !important; }
+        .stat-card .label { color: #aaaaaa !important; }
+        .stat-card .value { color: #f0f0f0 !important; }
+        .badge-demo      { background: #2a1a40 !important; color: #c3a8e8 !important; }
+    }
+    [data-theme="dark"] .badge-demo, .stApp[data-theme="dark"] .badge-demo { background: #2a1a40 !important; color: #c3a8e8 !important; }
+
 </style>
 """, unsafe_allow_html=True)
 
