@@ -100,6 +100,23 @@ html, body, [class*="css"] {
     .hela-header h1 { font-size: 1.4rem !important; }
     .stat-card .value { font-size: 1.3rem !important; }
 }
+
+    /* Metric text — explicit colours, light + dark (both OS pref and Streamlit toggle) */
+    [data-testid="stMetricLabel"]  { color: #444444 !important; font-size: 0.8rem !important; }
+    [data-testid="stMetricValue"]  { color: #111111 !important; font-weight: 700 !important; }
+    [data-testid="stMetricDelta"]  { color: #333333 !important; }
+    @media (prefers-color-scheme: dark) {
+        [data-testid="stMetricLabel"] { color: #aaaaaa !important; }
+        [data-testid="stMetricValue"] { color: #f0f0f0 !important; }
+        [data-testid="stMetricDelta"] { color: #cccccc !important; }
+    }
+    [data-theme="dark"] [data-testid="stMetricLabel"],
+    .stApp[data-theme="dark"] [data-testid="stMetricLabel"] { color: #aaaaaa !important; }
+    [data-theme="dark"] [data-testid="stMetricValue"],
+    .stApp[data-theme="dark"] [data-testid="stMetricValue"] { color: #f0f0f0 !important; }
+    [data-theme="dark"] [data-testid="stMetricDelta"],
+    .stApp[data-theme="dark"] [data-testid="stMetricDelta"] { color: #cccccc !important; }
+
 </style>
 """, unsafe_allow_html=True)
 
