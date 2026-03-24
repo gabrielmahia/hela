@@ -117,6 +117,18 @@ html, body, [class*="css"] {
     [data-theme="dark"] [data-testid="stMetricDelta"],
     .stApp[data-theme="dark"] [data-testid="stMetricDelta"] { color: #cccccc !important; }
 
+
+    @media (prefers-color-scheme: dark) {
+        .badge-confirmed { background: #1a3d24 !important; color: #7dcea0 !important; }
+        .badge-pending   { background: #3d3010 !important; color: #f0c060 !important; }
+        .badge-waived    { background: #0d2d35 !important; color: #7dd8e8 !important; }
+        .badge-failed    { background: #3d1015 !important; color: #f1948a !important; }
+    }
+    [data-theme="dark"] .badge-confirmed, .stApp[data-theme="dark"] .badge-confirmed { background: #1a3d24 !important; color: #7dcea0 !important; }
+    [data-theme="dark"] .badge-pending,   .stApp[data-theme="dark"] .badge-pending   { background: #3d3010 !important; color: #f0c060 !important; }
+    [data-theme="dark"] .badge-waived,    .stApp[data-theme="dark"] .badge-waived    { background: #0d2d35 !important; color: #7dd8e8 !important; }
+    [data-theme="dark"] .badge-failed,    .stApp[data-theme="dark"] .badge-failed    { background: #3d1015 !important; color: #f1948a !important; }
+
 </style>
 """, unsafe_allow_html=True)
 
