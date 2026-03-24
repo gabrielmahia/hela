@@ -7,7 +7,7 @@ All data is in-memory session state (no database required to run).
 from __future__ import annotations
 
 import streamlit as st
-import urllib.request, json
+import urllib.request
 import pandas as pd
 from datetime import date, datetime, timedelta
 import uuid
@@ -104,6 +104,29 @@ html, body, [class*="css"] {
 """, unsafe_allow_html=True)
 
 
+def fetch_cob_signal():
+    """Latest COB publication — county salary/wage compliance context."""
+    try:
+        import xml.etree.ElementTree as ET, re as _r
+        req = urllib.request.Request(
+            "https://cob.go.ke/feed/",
+            headers={"User-Agent": "hela-app/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=8) as r:
+            root = ET.fromstring(r.read())
+        items = []
+        for item in root.findall(".//item")[:3]:
+            title = item.findtext("title", "").strip()
+            link  = item.findtext("link", "").strip()
+            date  = item.findtext("pubDate", "").strip()[:16]
+            desc  = _r.sub(r"<[^>]+>", "", item.findtext("description", "")).strip()[:120]
+            if title:
+                items.append({"title": title, "link": link, "date": date, "summary": desc})
+        return items
+    except Exception:
+        return []
+
+
 @st.cache_data(ttl=3600)
 def fetch_kes_rate():
     """Live USD/GBP/EUR to KES rates for diaspora chama members."""
@@ -158,7 +181,6 @@ def _init_state():
         }
 
     if "members" not in st.session_state:
-        today = date.today()
         st.session_state.members = [
             {"id": "m1", "name": "Jane Wanjiku",    "phone": "254712345678", "role": "Chairperson",  "joined": date(2022, 3, 1),  "active": True},
             {"id": "m2", "name": "John Kamau",      "phone": "254723456789", "role": "Treasurer",    "joined": date(2022, 3, 1),  "active": True},
@@ -389,8 +411,8 @@ elif PAGE == "👥 Members":
             submitted = st.form_submit_button("Add member", type="primary")
             if submitted and new_name and new_phone:
                 phone = new_phone.strip().lstrip("+")
-                if phone.startswith("07"): phone = "254" + phone[1:]
-                elif phone.startswith("7") and len(phone) == 9: phone = "254" + phone
+                if phone.startswith("07"): phone = "254" + phone[1:]  # noqa: E701
+                elif phone.startswith("7") and len(phone) == 9: phone = "254" + phone  # noqa: E701
                 if not (phone.startswith("254") and phone.isdigit() and len(phone) == 12):
                     st.error("Invalid phone number. Use 07XXXXXXXX or 254XXXXXXXXX format.")
                 else:
@@ -641,27 +663,3 @@ elif PAGE == "⚙️ Settings":
         st.session_state.chama["name"] = new_name or "My Chama"
         st.success("Demo data cleared. Add your real members in the Members page.")
         st.rerun()
-@st.cache_data(ttl=3600)
-def fetch_cob_signal():
-    """Latest COB publication — county salary/wage compliance context."""
-    try:
-        import xml.etree.ElementTree as ET, re as _r
-        req = urllib.request.Request(
-            "https://cob.go.ke/feed/",
-            headers={"User-Agent": "hela-app/1.0"},
-        )
-        with urllib.request.urlopen(req, timeout=8) as r:
-            root = ET.fromstring(r.read())
-        items = []
-        for item in root.findall(".//item")[:3]:
-            title = item.findtext("title", "").strip()
-            link  = item.findtext("link", "").strip()
-            date  = item.findtext("pubDate", "").strip()[:16]
-            desc  = _r.sub(r"<[^>]+>", "", item.findtext("description", "")).strip()[:120]
-            if title:
-                items.append({"title": title, "link": link, "date": date, "summary": desc})
-        return items
-    except Exception:
-        return []
-
-
