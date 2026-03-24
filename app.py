@@ -680,3 +680,14 @@ elif PAGE == "⚙️ Settings":
         st.session_state.chama["name"] = new_name or "My Chama"
         st.success("Demo data cleared. Add your real members in the Members page.")
         st.rerun()
+# -- Feedback sidebar ---------------------------------------------------------
+with st.sidebar:
+    st.markdown("---")
+    st.caption(
+        "**Useful? Found a bug?**\n\n"
+        "Email: contact@aikungfu.dev\n\n"
+        "GitHub: [Report issue](https://github.com/gabrielmahia/hela/issues/new)\n\n"
+        "---\n"
+        "*Built by [Gabriel Mahia](https://aikungfu.dev)*\n\n"
+        "[Back to all tools](https://gabrielmahia.github.io)"
+    )
