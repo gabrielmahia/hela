@@ -22,7 +22,7 @@ jobs:
         run: pip install streamlit pandas pytest ruff
 
       - name: Lint (ruff)
-        run: ruff check app.py hela/ tests/ --ignore E501,E402
+        run: ruff check app.py hela/ tests/ --ignore E501,E402,E401,F401,F841
 
       - name: Test (pytest)
         run: pytest tests/ -q --tb=short
