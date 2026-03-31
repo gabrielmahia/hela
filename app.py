@@ -155,7 +155,7 @@ html, body, [class*="css"] {
 st.info(
     "**Demo mode** — Sample chama data, resets on reload. "
     "No data is saved or stored. "
-    "For a persistent deployment for your real chama: "
+    "For a permanent setup for your real chama: "
     "[contact@aikungfu.dev](mailto:contact@aikungfu.dev)",
     icon="ℹ️"
 )
