@@ -679,7 +679,7 @@ elif PAGE == "⚙️ Settings":
         "Hela stores everything in browser session memory only. "
         "If you close this tab, refresh the page, or the Streamlit server restarts, "
         "all members, contributions, loans, and fines are gone.\n\n"
-        "**Before entering real chama data:** connect a Google Sheet as your backend "
+        "**Before entering real chama data:** connect a Google Sheet to save records permanently "
         "(see the README) so records are saved permanently. "
         "The demo data below is for exploration only.",
         icon=None
