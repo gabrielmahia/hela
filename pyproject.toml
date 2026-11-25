@@ -7,7 +7,7 @@ name = "hela"
 version = "0.1.0-dev"
 description = "Chama management for the 21st century"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "PolyForm-Noncommercial-1.0.0"
 authors = [{name = "Gabriel Mahia", email = "contact@aikungfu.dev"}]
 keywords = ["chama", "rosca", "kenya", "fintech", "africa", "mpesa", "savings"]
 requires-python = ">=3.11"
