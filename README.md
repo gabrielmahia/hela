@@ -5,7 +5,7 @@
 [![Live App](https://img.shields.io/badge/Live%20App-hela.streamlit.app-FF4B4B?logo=streamlit)](https://helaismoney.streamlit.app)
 [![Live Data](https://img.shields.io/badge/Live%20Data-open.er-api.com%20%C2%B7%20COB%20RSS-00b4d8)](#hela)
 [![Status](https://img.shields.io/badge/status-early%20development-orange)](#roadmap)
-[![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red)](LICENSE)
+[![License: PolyForm Noncommercial](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-blue.svg)](LICENSE)
 
 > **Hela** /héla/ — *Kiswahili*: money, wealth, funds.
 
@@ -125,7 +125,7 @@ Contact: contact@aikungfu.dev
 
 ## License
 
-CC BY-NC-ND 4.0. Commercial licensing: contact@aikungfu.dev
+PolyForm Noncommercial 1.0.0. Commercial licensing: contact@aikungfu.dev
 
 ---
 
